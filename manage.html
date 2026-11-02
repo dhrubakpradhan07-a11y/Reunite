@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f9f6">
+  <title>Manage your report — Reunite</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" id="manageStyle" href="/static/css/styles.css">
+  <script>if (location.protocol === 'file:') document.getElementById('manageStyle').href = 'static/css/styles.css';</script>
+</head>
+<body class="manage-body">
+  <div class="page-glow"></div>
+  <header class="site-header"><div class="container nav-row">
+    <a class="brand" id="homeBrand" href="/"><span class="brand-mark">↺</span>reunite<span class="brand-dot">.</span></a>
+    <a class="btn btn-white btn-small" id="homeLink" href="/">← Back to feed</a>
+  </div></header>
+  <main class="container manage-wrapper">
+    <div class="manage-heading"><span class="section-kicker">YOUR PRIVATE SPACE</span><h1>My report <em>dashboard.</em></h1><p>This dashboard is only accessible with your unique private link. Keep it somewhere safe.</p></div>
+    <div id="manageContent" class="manage-content"><div class="loading-state"><span class="spinner"></span> Loading your report...</div></div>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span>Reunite makes reuniting a little easier.</span><a id="footerHome" href="/">Explore feed →</a></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+    (function () {
+      const prefix = location.protocol === 'file:' ? 'static/js/' : '/static/js/';
+      const api = document.createElement('script');
+      api.src = prefix + 'api.js';
+      api.onload = function () {
+        const manage = document.createElement('script');
+        manage.src = prefix + 'manage.js';
+        document.body.appendChild(manage);
+      };
+      document.body.appendChild(api);
+    })();
+  </script>
+</body>
+</html>

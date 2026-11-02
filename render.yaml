@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: reunite-lost-found
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --threads 2 --timeout 60
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: '1'
+# IMPORTANT: SQLite+uploads require persistent storage in production.
+# Add a paid persistent disk in Render, mount it at /var/data/reunite,
+# then set DATA_DIR=/var/data/reunite. Without this, data can be lost on redeploy.
